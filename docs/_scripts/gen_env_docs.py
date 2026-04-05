@@ -65,7 +65,9 @@ filtered_babyai_envs = {
 
 # Because they share a class, only the default (MazeSimple) environment should be kept
 canonical_wfc_env_name = "MazeSimple"
-filtered_wfc_envs = {canonical_wfc_env_name: wfc_envs[canonical_wfc_env_name]}
+filtered_wfc_envs = {}
+for canonical_wfc_env_name in wfc_envs:
+    filtered_wfc_envs[canonical_wfc_env_name] = wfc_envs[canonical_wfc_env_name]
 
 SOURCE_PY_LINK_PATTERN = re.compile(r"\((/)?(minigrid/[A-Za-z0-9_./-]+)\.py\)")
 
