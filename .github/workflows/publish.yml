@@ -36,11 +36,16 @@ jobs:
     needs:
       - build-wheels
     if: github.event_name == 'release' && github.event.action == 'published'
+    environment:
+      name: pypi
+      url: https://pypi.org/p/mpe2
+    permissions:
+      id-token: write
     steps:
       - name: Download dists
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@v4
         with:
           name: artifact
           path: dist
-      - name: Publish to PyPI
+      - name: Publish
         uses: pypa/gh-action-pypi-publish@release/v1
